@@ -1,6 +1,6 @@
 <div id="headerMiddle">
 	<div id="logo">
-		<a href="http://www.compactappliance.com/" title="Jump to our Homepage">
+		<a href="http://www.winecoolerdirect.com/" title="Jump to our Homepage">
 			<img src="<?php the_field('main_logo', 'option');?>"/>
 		</a>
 	</div>
@@ -12,14 +12,14 @@
 	<div class="headerSearchBox">
 		<div class="headerContact">
 			<div class="contactHeader">
-				<a href="http://www.compactappliance.com/on/demandware.store/Sites-Appliance-Site/default/Page-Show?gcid=BRAND_CS" alt="Contact Our Product Experts">
+				<a href="http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Page-Show?gcid=BRAND_CS" alt="Contact Our Product Experts">
 					<b>Product Experts</b>
 				</a> - Available 24 x 7
 			</div><!-- contactHeader -->
 			<span class="phoneFlag">&nbsp;</span>
 			<span class="phoneNumber">1-800-297-6076</span> or
 			<div id="lpButtonDiv1" style="display: inline; visibility: visible;">
-				<a href="http://www.compactappliance.com/BRAND_CS.html">Email</a>
+				<a href="http://www.winecoolerdirect.com/BRAND_CS.html">Email</a>
 			</div>
 		</div><!-- headerContact -->
 		<div class="inputContainer">

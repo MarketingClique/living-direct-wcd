@@ -30,7 +30,7 @@ $('.menu-primary').superfish({
 });
 
 // adding home icon to breadcrumbs
-$(".breadcrumb").prepend('<a href="http://compactappliance.com"><i class="icon-home"></i></a> &raquo; ');
+$(".breadcrumb").prepend('<a href="http://winecoolerdirect.com"><i class="icon-home"></i></a> &raquo; ');
 
 // mega menu drop
 $( "#catdrop" ).toggle(function(e) {
