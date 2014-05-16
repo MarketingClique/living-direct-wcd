@@ -4,13 +4,6 @@ add_theme_support( 'html5' );
 // Add Viewport meta tag for mobile browsers
 add_theme_support( 'genesis-responsive-viewport' );
 
-
-// stylesheet
-function ca_enqueue_styles() {
-	wp_enqueue_style('stylesheet', get_stylesheet_uri(),'','','all');
-}
-add_action( 'wp_enqueue_scripts', 'ca_enqueue_styles' );
-
 // global scripts
 function ca_enqueue_scripts() {
 	global $is_IE;
