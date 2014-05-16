@@ -90,65 +90,11 @@ html.no-flexboxlegacy {
 	}
 }
 html.no-cssreflections {
+	#headerBanner {
+		margin-top: -2px;
+	}
 	.menu-primary {
-		li {padding: 0;}
-		a {
-			line-height: 21px;
-			padding: 4px 16px;
-			display: block;
-			letter-spacing: 0;
-		}
-		& > li:nth-child(2) a {
-			padding: 4px 13.5px;
-		}
-		& > li:nth-child(3) a {
-			padding: 4px 16px 4px 15.5px;
-		}
-		& > li:nth-child(4) a {
-			padding: 4px 18px;
-		}
-		& > li:nth-child(5) a {
-			padding: 4px 18px;
-		}
-		& > li:nth-last-child(2) a {
-			padding: 4px 16.5px 4px 15.5px;
-		}
-		& > li:last-child a {
-			color: #f00!important;
-			font-size: 16px;
-			font-weight: bold;
-			padding: 5px 17px 4px 17.5px;
-		}
-			ul {
-			position: absolute;
-			display: none;
-			top: 100%;
-			left: -18px;
-			width: 225px;
-			z-index: 99;
-			list-style: none;
-			box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
-			li {
-				background: #F6F2E9;
-				padding: 3px 0 3px 3px;
-				&:hover {
-					background: #A2DCED;
-					color: $primary-color;
-				}
-			}
-			a {
-				color: $primary-color;
-				border-right: none;
-				text-align: left;
-				padding: 0!important;
-			}
-			li:nth-last-child(2), li:last-child {
-				background: #F6F2E9;
-			}
-			li:nth-last-child(2):hover, li:last-child:hover  {
-				background: #A2DCED;
-			}
-		}
+		a {padding-bottom: 5px}
 	}
 }
 body.windows {
@@ -165,85 +111,29 @@ body.windows {
 }
 body.gecko.windows {
 	.headerContact {width: 242px; }
-	.menu-primary {
-	& > li:nth-child(2) a {
-			padding: 4px 12.5px;
-		}
-		& > li:nth-child(3) a {
-			padding: 4px 15px 4px 16.5px;
-		}
-		& > li:nth-child(4) a {
-			padding: 4px 18px;
-		}
-		& > li:nth-child(5) a {
-			padding: 4px 18px 4px 17px; 
-		}
-		& > li:nth-last-child(2) a {
-			padding: 4px 16.5px 4px 14.5px;
-		}
-		& > li:last-child a {
-			padding: 5px 17px 4px 17.5px;
-		}
-	}	
+	#headerBanner {margin-top: -2.5px}
+	.menu-primary a {padding-bottom: 7px;}
 }
 body.chrome.windows {
-	.menu-primary { 
-	a {padding: 4px 16px;}
-	& > li:nth-child(2) a {
-			padding: 4px 11.5px 4px 12.5px;
-		}
-		& > li:nth-child(3) a {
-			padding: 4px 15px 4px 16.5px;
-		}
-		& > li:nth-child(4) a {
-			padding: 4px 17px 4px 18px;
-		}
-		& > li:nth-child(5) a {
-			padding: 4px 17px 4px 18px; 
-		}
-		& > li:nth-last-child(2) a {
-			padding: 4px 14.5px 4px 16.5px;
-		}
-		& > li:last-child a {
-			padding: 5px 17px 4px 19.5px;
-		}
-	}
+	#headerBanner {margin-top: -2.5px}
 }
 body.ie.windows {
 	.menu-primary {
-	& > li:nth-child(2) a {
-			padding: 4px 12.5px 4px 13px;
-		}
-		& > li:nth-child(3) a {
-			padding: 4px 15.5px 4px 16px;
-		}
-		& > li:nth-child(4) a {
-			padding: 4px 18px;
-		}
-		& > li:nth-child(5) a {
-			padding: 4px 17.5px;
-		}
-		& > li:nth-last-child(2) a {
-			padding: 4px 15.5px 4px 16px;
-		}
-		& > li:last-child a {
-			color: #dd0000!important;
-		}
 		ul.submenu {
 			position: absolute;
 			display: none;
 			top: 100%;
 			left: -18px;
-			width: 225px;
+			width: 200px;
 			z-index: 99;
 			list-style: none;
 			box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
 			li {
 				background: #F6F2E9;
-				padding: 3px 0 3px 3px;
-					&:hover {
-					background: #A2DCED;
-					color: $primary-color;
+				padding: 4px 12px!important;
+				&:hover {
+					background: #DC7BB1;
+					color: #833f1c;
 				}
 			}
 		}

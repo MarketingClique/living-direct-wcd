@@ -287,20 +287,21 @@ p {font-size: 14px;}
 #headerBanner {
 	@extend .hide-for-small;
 	padding:0;
+	margin-top: -3px;
 }
 .menu-primary {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	width: 990px;
-	height: 29px;
-	background: #701A49;
+	width: 100%;
+	background: #FFD372;
+	display: inline-block;
 	& > li {
 		float: left;
 		position: relative;
 		background: #701A49;
-		padding: .4em 0 .3em;
 		border-right: .1em solid #480A2B;
+		@include transition(background .2s);
 		&:hover {
 			background: #DC7BB1;
 			color: #833f1c;
@@ -312,52 +313,36 @@ p {font-size: 14px;}
 	li:last-child {border-right: none;}
 	li:hover > ul { display: block;}
 	a {
-		color: #F5F1E8;
+		color: white;
 		font-size: 14px;
 		text-align: center;
-		line-height: 19px;
-		padding: .35em .89em;
+		padding: 6px 16px;
+		display: block;
 		&:hover {
 			color: #833f1c;
+			text-decoration: underline;
 		}
 	}
-	& > li:first-child a {
-		padding: .35em 1.05em .35em 1.15em;	
-	}
-	& > li:nth-child(2) a {
-		padding-right: .83em;
-	}
-	& > li:nth-child(3) a {
-		padding: .35em 1.15em .35em 1.1em;
-	}
-	& > li:nth-child(4) a {
-		padding: 0.35em 1.15em 0.35em 1.25em;
-	}
-	& > li:nth-child(5) a {
-		padding: 0.35em 1.22em 0.35em 1.32em;
-	}
-	& > li:nth-last-child(2) a {
-		padding: 0.35em 1em 0.35em 1.15em;
-	}
-	& > li:last-child a {
-		padding: 0em 1em .65em 1.1em;
-	}
+	& > li:first-child a, & > li:nth-child(2) a {padding: 6px 15px;}
 	& > li:last-child {
-		background: #F5E0EB;
-		a {color: #833f1c;}
+		background: #FFD372;
+		a {
+			color: #833f1c;
+			padding: 6px 7px 6px 14px;
+			font-weight: bold;
+		}
 	}
 		ul {
-		position: absolute;
-		display: none;
-		top: 100%;
-		left: -18px;
-		width: 225px;
-		z-index: 99;
-		list-style: none;
-		box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
+			position: absolute;
+			display: none;
+			top: 100%;
+			left: -18px;
+			width: 200px;
+			z-index: 99;
+			list-style: none;
+			box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
 		li {
 			background: #F5F1e8;
-			padding: 3px 0 3px 3px;
 			border:none;
 			&:hover {
 				background: #DC7BB1;
@@ -367,7 +352,8 @@ p {font-size: 14px;}
 		a {
 			color: #833f1c;
 			border-right: none;
-			padding-left: 0!important;
+			padding: 4px 12px!important;
+			text-align: left;
 		}
 	}
 }
