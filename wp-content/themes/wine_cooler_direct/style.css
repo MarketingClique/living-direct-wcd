@@ -5288,6 +5288,9 @@ body.ie8 #footer-mailing .columns {
 body.ie8 #footer-posts #posts-wrap img {
   height: 127px !important; }
 
+body.safari #headerBanner {
+  margin-top: -2.5px; }
+
 @media screen and (max-width: 767px) {
   /* Search Area */
   /* Pages */
