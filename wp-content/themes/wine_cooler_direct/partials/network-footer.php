@@ -35,7 +35,7 @@
 	<h4>Customer Service</h4>
 	<ul>
                 <li><b>
-<!-- spid include: Store_Display_Phone -->1-800-297-6076</b></li>
+<!-- spid include: Store_Display_Phone -->1-877-607-2517</b></li>
 		<li><a href="http://www.winecoolerdirect.com/BRAND_CS.html">Contact Us</a></li>
                 <li><a href="http://www.winecoolerdirect.com/BRAND_CS_SHIPPING.html">Shipping Options</a></li>
                 <li><a href="http://www.winecoolerdirect.com/BRAND_CS_RETURNS.html">Return &amp; Refund Policy</a></li>
