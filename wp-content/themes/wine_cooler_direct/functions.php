@@ -158,7 +158,7 @@ function ca_contact_callout() {
 		echo '<section class="user"><i class="icon-user"></i></section>';
 		echo '<section class="content">';
 			_e('<p class="expert">Get Expert Help 24x7</p>');
-			_e('<p class="phone"><span><a href="tel:+18002976076">1-800-297-6076</a></span></p>');
+			_e('<p class="phone"><span><a href="tel:+18776072517">1-877-607-2517</a></span></p>');
 		echo '</section>';	
 	echo '</section>';
 }
