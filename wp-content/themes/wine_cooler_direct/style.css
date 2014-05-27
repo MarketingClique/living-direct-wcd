@@ -4189,7 +4189,7 @@ p {
   .menu-primary > li:last-child {
     background: #FFD372; }
     .menu-primary > li:last-child a {
-      color: #833f1c;
+      color: #500C31;
       padding: 6px 7px 6px 14px;
       font-weight: bold; }
   .menu-primary ul {
@@ -5184,11 +5184,6 @@ body {
 html.no-flexboxlegacy .headerSearchBox {
   width: 339px !important; }
 
-html.no-cssreflections #headerBanner {
-  margin-top: -2px; }
-html.no-cssreflections .menu-primary a {
-  padding-bottom: 5px; }
-
 body.windows #header #headerTop {
   overflow: hidden; }
   body.windows #header #headerTop #networkHeader {
@@ -5208,6 +5203,25 @@ body.gecko.windows .menu-primary a {
 body.chrome.windows #headerBanner {
   margin-top: -2.5px; }
 
+body.ie.windows #header #headerTop #networkHeader {
+  margin-top: 0; }
+body.ie.windows #headerBanner {
+  margin-top: -3px; }
+body.ie.windows .menu-primary a {
+  padding-bottom: 5px; }
+body.ie.windows .menu-primary > li:first-child a {
+  padding-right: 14px; }
+body.ie.windows .menu-primary > li:nth-child(2) a {
+  padding-left: 15.5px; }
+body.ie.windows .menu-primary > li:nth-child(3) a {
+  padding-left: 15.75px; }
+body.ie.windows .menu-primary > li:nth-child(4) a {
+  padding-left: 15.5px; }
+body.ie.windows .menu-primary > li:nth-child(5) a {
+  padding-left: 15.75px; }
+body.ie.windows .menu-primary > li:nth-last-child(2) a {
+  padding-left: 15.5px;
+  padding-right: 15.5px; }
 body.ie.windows .menu-primary ul.submenu {
   position: absolute;
   display: none;

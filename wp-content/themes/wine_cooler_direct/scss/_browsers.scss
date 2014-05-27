@@ -89,14 +89,7 @@ html.no-flexboxlegacy {
 		width: 339px!important;
 	}
 }
-html.no-cssreflections {
-	#headerBanner {
-		margin-top: -2px;
-	}
-	.menu-primary {
-		a {padding-bottom: 5px}
-	}
-}
+
 body.windows {
 	#header #headerTop {
 	overflow: hidden;
@@ -118,7 +111,19 @@ body.chrome.windows {
 	#headerBanner {margin-top: -2.5px}
 }
 body.ie.windows {
+	#header #headerTop #networkHeader {margin-top: 0;}
+	#headerBanner {margin-top: -3px}
 	.menu-primary {
+		a {padding-bottom: 5px;}
+		> li:first-child a {padding-right: 14px}
+		> li:nth-child(2) a {padding-left: 15.5px}
+		> li:nth-child(3) a {padding-left: 15.75px}
+		> li:nth-child(4) a {padding-left: 15.5px}
+		> li:nth-child(5) a {padding-left: 15.75px}
+		> li:nth-last-child(2) a {
+			padding-left: 15.5px;
+			padding-right: 15.5px;
+		}
 		ul.submenu {
 			position: absolute;
 			display: none;
