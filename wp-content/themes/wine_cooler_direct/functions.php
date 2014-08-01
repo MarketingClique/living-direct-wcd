@@ -1,21 +1,108 @@
 <?php
-// Enable HTML5 markup
-add_theme_support( 'html5' );
-// Add Viewport meta tag for mobile browsers
-add_theme_support( 'genesis-responsive-viewport' );
+
+// includes
+include_once('lib/backend.php');
+include_once('lib/simple_html_dom.php');
+include_once('lib/acf/advanced-custom-fields/acf.php' );
+include_once('lib/acf/acf-repeater/acf-repeater.php');
+include_once('lib/acf/acf-options-page/acf-options-page.php');
+include_once('lib/ca-custom-fields.php');
+include_once('lib/ca-filters.php');
+
+
+add_action('genesis_setup','child_theme_setup', 15);
+function child_theme_setup() {
+
+	define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/style.css' ) );
+
+
+	remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
+
+	// Enable HTML5 markup
+	add_theme_support( 'html5' );
+
+	// Add Viewport meta tag for mobile browsers
+	add_theme_support( 'genesis-responsive-viewport' );
+
+	add_action( 'init', 'ca_enqueue_styles', 4 );
+	add_action( 'init', 'ca_enqueue_scripts', 8 );
+
+	add_action('genesis_doctype','ca_ie_support', 20);
+	add_action('genesis_before', 'ca_fb_sdk');
+	add_action( 'genesis_before', 'ca_remove_header' );
+	add_action( 'genesis_before', 'ca_network_header' );
+	add_action( 'genesis_header', 'ca_site_header' );
+	add_action( 'genesis_header', 'ca_mobile_header' );
+	add_action( 'genesis_before', 'ca_remove_header' );
+	add_action( 'genesis_after_header', 'genesis_do_nav' );
+	add_action( 'genesis_after_header', 'ca_header_banner' );
+	add_action( 'genesis_after', 'ca_modal_box' );
+	add_action('init', 'ca_remove_sidebars');
+	add_action('init', 'ca_new_sidebars');
+	add_action('get_header','ca_change_genesis_sidebar');
+	add_action('genesis_before_sidebar_widget_area', 'ca_contact_callout');
+	add_action( 'genesis_before', 'ca_remove_breadcrumb' );
+	add_action( 'genesis_before', 'ca_move_breadcrumb' );
+	add_action( 'genesis_before_content_sidebar_wrap', 'ca_search_area' );
+	add_action( 'genesis_after_header', 'ca_social_shares' );
+	add_action( 'genesis_before_content_sidebar_wrap', 'ca_mega_menu' );
+	add_action( 'genesis_before', 'ca_remove_footer' );
+	add_action( 'genesis_footer', 'ca_add_footer' );
+	add_action( 'genesis_footer', 'ca_network_footer' );
+	add_action( 'genesis_footer', 'ca_mobile_footer' );
+	add_action( 'genesis_after_content_sidebar_wrap', 'ca_home_columns' );
+	add_action( 'genesis_after_loop', 'ca_page_slider' );
+	add_action('genesis_before_loop', 'ca_category_heading');
+	add_action('genesis_before_loop', 'ca_show_cat_slider');
+	add_action( 'genesis_before', 'ca_remove_meta_on_categories' );
+	add_action( 'pre_get_posts', 'ca_category_posts_counts', 1 );
+	add_filter('excerpt_more', 'ca_get_read_more_link');
+	add_filter( 'the_content_more_link', 'ca_get_read_more_link' );
+	add_action( 'genesis_before', 'ca_remove_pagination' );
+	add_action( 'genesis_before_loop', 'ca_top_pagination' );
+	add_action( 'genesis_after_loop', 'ca_bottom_pagination' );
+	add_action( 'genesis_entry_header', 'ca_post_comment_flag' );
+	add_filter('body_class','mc_browser_body_class');
+
+}
 
 // global scripts
+function ca_enqueue_styles() {
+	if ( !is_admin() ) {
+	$IE8 = ( ereg( 'MSIE 8',$_SERVER['HTTP_USER_AGENT'] ) ) ? true : false;
+	global $is_IE;
+
+	// css
+	wp_enqueue_style( 'wcd-style', get_stylesheet_uri(), array(), CHILD_THEME_VERSION );
+
+	if ( $IE8 == 1 ) {
+
+		wp_deregister_style( 'wcd-style' );
+		wp_enqueue_style( 'ca-ie8-style', get_stylesheet_directory_uri() .'/ie8.css', array(), CHILD_THEME_VERSION );
+		wp_enqueue_style( 'ca-ie8-print-style', get_stylesheet_directory_uri() .'/ie8print.css', array( 'ca-ie8-style' ), CHILD_THEME_VERSION );
+
+	}
+	}
+
+}
+
 function ca_enqueue_scripts() {
+	if ( !is_admin() ) {
+	$IE8 = ( ereg( 'MSIE 8',$_SERVER['HTTP_USER_AGENT'] ) ) ? true : false;
 	global $is_IE;
 	if($is_IE) {
-		wp_enqueue_script('html5shiv', "http://html5shiv.googlecode.com/svn/trunk/html5.js"); 	
-		wp_enqueue_script('respond',  get_stylesheet_directory_uri().'/js/respond.js');
-		wp_enqueue_script('selectivizr',  get_stylesheet_directory_uri().'/js/selectivizr-min.js', array('jquery'));
+
+		wp_enqueue_script('html5shiv', "http://html5shiv.googlecode.com/svn/trunk/html5.js", false );
+		wp_enqueue_script('respond',  get_stylesheet_directory_uri().'/js/respond.js', false );
+		wp_enqueue_script('selectivizr',  get_stylesheet_directory_uri().'/js/selectivizr-min.js', array('jquery'), false );
+
 	}
-		wp_enqueue_script('modernizr', get_stylesheet_directory_uri().'/js/modernizr.custom.js');
-		wp_enqueue_script('frontend', get_stylesheet_directory_uri().'/js/min/frontend.min.js', array('jquery'),'',true);
+
+	wp_enqueue_script('modernizr', get_stylesheet_directory_uri().'/js/modernizr.custom.js', false );
+	wp_enqueue_script('frontend', get_stylesheet_directory_uri().'/js/min/frontend.min.js', array('jquery'),'',true);
+	}
+
 }
-add_action( 'wp_enqueue_scripts', 'ca_enqueue_scripts' );
 
 // adding ie support to head
 function ca_ie_support() {
@@ -24,7 +111,6 @@ function ca_ie_support() {
 	echo '<!--[if IE 8]><html class="lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><![endif]-->';
 	echo '<!--[if gt IE 8]><!--><html xmlns="http://www.w3.org/1999/xhtml"><!--<![endif]-->';
 }
-add_action('genesis_doctype','ca_ie_support', 20);
 
 // add fb sdk after body tag
 function ca_fb_sdk() {
@@ -37,17 +123,8 @@ echo "<script>(function(d, s, id) {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>";
 }
-add_action('genesis_before', 'ca_fb_sdk');
 
 
-// includes
-include_once('lib/backend.php');
-include_once('lib/simple_html_dom.php');
-include_once('lib/acf/advanced-custom-fields/acf.php' );
-include_once('lib/acf/acf-repeater/acf-repeater.php');
-include_once('lib/acf/acf-options-page/acf-options-page.php');
-include_once('lib/ca-custom-fields.php');
-include_once('lib/ca-filters.php');
 if ( !defined('DESKTOPSERVER') ){
 define( 'ACF_LITE' , true );
 }
@@ -57,27 +134,22 @@ define( 'ACF_LITE' , true );
 function ca_remove_header(){
 	remove_action( 'genesis_header', 'genesis_do_header' );
 }
-add_action( 'genesis_before', 'ca_remove_header' );
 
 
 // network header
 function ca_network_header(){
 	get_template_part('partials/network', 'header');
 }
-add_action( 'genesis_before', 'ca_network_header' );
 
 
 // site header
 function ca_site_header(){
 	get_template_part('partials/site', 'header');
 }
-add_action( 'genesis_header', 'ca_site_header' );
-
 // mobile header
 function ca_mobile_header(){
 	get_template_part('partials/mobile', 'header');
 }
-add_action( 'genesis_header', 'ca_mobile_header' );
 
 function mobile_search_form() {?>
 	<form id="mobile-searchform" action="<?php echo home_url('/'); ?>" method="get" role="search">
@@ -98,16 +170,13 @@ function mobile_search_form() {?>
 function ca_remove_menu() {
 	remove_action( 'genesis_after_header', 'genesis_do_nav' );
 }
-add_action( 'genesis_before', 'ca_remove_header' );	
-add_action( 'genesis_after_header', 'genesis_do_nav' );
 
 //header banner
 function ca_header_banner(){
-	$html = file_get_html('http://www.winecoolerdirect.com/');
-	foreach($html->find('#headerBanner') as $element) 
+	$html = file_get_html('http://www.kegerator.com/');
+	foreach($html->find('#headerBanner') as $element)
        echo $element;
 }
-add_action( 'genesis_after_header', 'ca_header_banner' );
 
 //modal box
 function ca_modal_box() {
@@ -116,7 +185,6 @@ echo' <div id="HeaderModal" class="reveal-modal large" data-reveal>';
   echo '<a class="close-reveal-modal">&#215;</a>';
 echo '</div>';
 }
-add_action( 'genesis_after', 'ca_modal_box' );
 
 /** Sidebar Functions */
 //remove sidebars
@@ -124,57 +192,51 @@ function ca_remove_sidebars(){
 	unregister_sidebar( 'header-right' );
 	unregister_sidebar( 'sidebar-alt' );
 }
-add_action('init', 'ca_remove_sidebars');
 
 // Register home sidebar
 function ca_new_sidebars() {
-	genesis_register_sidebar( 
+	genesis_register_sidebar(
 		array(
 			'id' => 'home-sidebar',
 			'name' => 'Home Sidebar',
 			'description' => 'This is the sidebar for the home page.',
-		) 
+		)
 	);
-}	
-add_action('init', 'ca_new_sidebars');
+}
 
 
 function ca_change_genesis_sidebar() {
-    if ( is_front_page()) { 
+    if ( is_front_page()) {
         remove_action( 'genesis_sidebar', 'genesis_do_sidebar' ); //remove the default genesis sidebar
         add_action( 'genesis_sidebar', 'ca_do_sidebar' ); //add an action hook to call the function for my custom sidebar
     }
 }
-add_action('get_header','ca_change_genesis_sidebar');
 
 //Function to output my custom sidebar
 function ca_do_sidebar() {
 	dynamic_sidebar( 'home-sidebar' );
 }
 
-//callout before sidebar 
+//callout before sidebar
 function ca_contact_callout() {
 	echo '<section id="contact-callout">';
 		echo '<section class="user"><i class="icon-user"></i></section>';
 		echo '<section class="content">';
 			_e('<p class="expert">Get Expert Help 24x7</p>');
-			_e('<p class="phone"><span><a href="tel:+18776072517">1-877-607-2517</a></span></p>');
-		echo '</section>';	
+			_e('<p class="phone"><span><a href="tel:+18669508710">1-866-950-8710</a></span></p>');
+		echo '</section>';
 	echo '</section>';
 }
-add_action('genesis_before_sidebar_widget_area', 'ca_contact_callout');
 
 /** Before Content/Sidebar Wrap */
-// moving breadcrumbs 
+// moving breadcrumbs
 function ca_remove_breadcrumb(){
 	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 }
-add_action( 'genesis_before', 'ca_remove_breadcrumb' );
 
 function ca_move_breadcrumb(){
 	add_action( 'genesis_after_header', 'genesis_do_breadcrumbs' );
 }
-add_action( 'genesis_before', 'ca_move_breadcrumb' );
 
 //search area above content
 function ca_search_area() {?>
@@ -188,7 +250,6 @@ function ca_search_area() {?>
 	</section>
 </section>
 <?php  }
-add_action( 'genesis_before_content_sidebar_wrap', 'ca_search_area' );
 
 function body_search_form() {?>
 	<form id="searchform" action="<?php echo home_url('/'); ?>" method="get" role="search">
@@ -211,10 +272,9 @@ function body_search_form() {?>
 //social share buttons
 function ca_social_shares() {
 	echo '<section id="social-wrap">';
-	if( function_exists('ADDTOANY_SHARE_SAVE_KIT') ) { ADDTOANY_SHARE_SAVE_KIT(); } 
+	if( function_exists('ADDTOANY_SHARE_SAVE_KIT') ) { ADDTOANY_SHARE_SAVE_KIT(); }
 	echo '</section>';
 }
-add_action( 'genesis_after_header', 'ca_social_shares' );
 
 // mega menu/home page columns
 function ca_mega_columns(){
@@ -223,19 +283,19 @@ function ca_mega_columns(){
 			 while ( have_rows('columns','option') ) : the_row();
 			 echo '<li>';
 				echo '<h4>'; the_sub_field('heading','option'); echo '</h4>';
-				echo '<section class="sub-content">'; the_sub_field('content','option'); echo '</section>';	 
-				echo '<h6>'; the_sub_field('sub_heading','option'); echo '</h6>'; 	
+				echo '<section class="sub-content">'; the_sub_field('content','option'); echo '</section>';
+				echo '<h6>'; the_sub_field('sub_heading','option'); echo '</h6>';
 			 echo '</li>';
 			 endwhile;
 		echo '</ul>';
 		endif;
-		
+
 		echo '<ul class="small-block-grid-1 large-block-grid-3 bottom-set">';
 			echo '<li>';
-				if( have_rows('product_articles','option')): 
+				if( have_rows('product_articles','option')):
 				echo '<section class="product-articles">';
 				while (have_rows('product_articles','option') ) : the_row();
-					$articles = get_sub_field('article','option'); 
+					$articles = get_sub_field('article','option');
 					foreach ($articles as $article) {
 						$title = get_the_title($article->ID);
 						$permalink = get_permalink($article->ID);
@@ -243,24 +303,24 @@ function ca_mega_columns(){
 						echo '<a href="'.$permalink.'">'.$title.'</a>';
 						echo '</p>';
 					}
-				endwhile; 
+				endwhile;
 				echo '</section>';
 				endif;
-			
+
 				echo '<p>Or choose from Featured Category</p>';
 				if( have_rows('product_category','option') ): while ( have_rows('product_category','option') ) : the_row();
-					$product_id = get_sub_field('category_name','option'); 
+					$product_id = get_sub_field('category_name','option');
 					$product_name = get_cat_name( $product_id );
 					$product_link = get_sub_field('category_link','option');
 					echo '<p><a class="arrow" href="'.$product_link.'">'.$product_name.'</a></p>';
 				endwhile; endif;
 			echo '</li>';
-			
+
 			echo '<li>';
-				if( have_rows('lifestyle_articles','option')): 
+				if( have_rows('lifestyle_articles','option')):
 				echo '<section class="lifestyle-articles">';
 				while (have_rows('lifestyle_articles','option') ) : the_row();
-					$articles = get_sub_field('article','option'); 
+					$articles = get_sub_field('article','option');
 					foreach ($articles as $article) {
 						$title = get_the_title($article->ID);
 						$permalink = get_permalink($article->ID);
@@ -268,24 +328,24 @@ function ca_mega_columns(){
 						echo '<a href="'.$permalink.'">'.$title.'</a>';
 						echo '</p>';
 					}
-				endwhile; 
+				endwhile;
 				echo '</section>';
 				endif;
-				
-				$lifestyle = get_category_by_slug('lifestyle');  
+
+				$lifestyle = get_category_by_slug('lifestyle');
 				$lifestyle_id = $lifestyle->term_id;
 				$lifestyle_url = get_category_link( $lifestyle_id);
 				echo '<a class="see-all arrow" href="'.$lifestyle_url.'">See All Articles</a>';
 			echo '</li>';
-			
+
 			echo '<li>';
 				echo ca_mega_news();
-				$news = get_category_by_slug('news-events');  
+				$news = get_category_by_slug('news-events');
 				$news_id = $news->term_id;
 				$news_url = get_category_link( $news_id);
 				echo '<a class="arrow see-all" href="'.$news_url.'">See All News</a>';
 			echo '</li>';
-		
+
 		echo '</ul>';
 }
 
@@ -325,23 +385,21 @@ function ca_mobile_news() {
 function ca_mega_menu() {
 	echo '<section id="mega-menu">';
 		echo ca_mega_columns();
-	echo '</section>';	
+	echo '</section>';
 }
-add_action( 'genesis_before_content_sidebar_wrap', 'ca_mega_menu' );
 
 /** Footer Functions */
-// Remove the Footer 
+// Remove the Footer
 function ca_remove_footer(){
 	remove_action( 'genesis_footer', 'genesis_do_footer' );
 }
-add_action( 'genesis_before', 'ca_remove_footer' );
 
 // Add our Footer
 function ca_add_footer(){
 	echo '<h4 class="special-header">';
 		_e('popular articles');
 	echo '</h4>';
-	
+
 	echo '<section id="footer-posts">';
 		ca_footer_posts();
 	echo '</section>';
@@ -349,28 +407,27 @@ function ca_add_footer(){
 	echo '<section id="footer-mailing">';
 		echo '<div class="mailer-box">';
 		_e('<p class="small-12 large-7 columns"><span>Want More?</span> Get the latest deals, news and subscribe today.</p>');
-		echo '<form method="post" action="http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Newsletter-SubscribedFooter">';
+		echo '<form method="post" action="http://www.kegerator.com/on/demandware.store/Sites-Appliance-Site/default/Newsletter-SubscribedFooter">';
 			echo '<div class="small-12 large-5 columns">';
 				echo '<div class="row collapse">';
 					echo '<div class="large-7 columns">';
 						echo '<input type="text" name="Email" id="control_EMAIL" label="Email" value="" placeholder="Email Address">';
-					echo '</div>';	
+					echo '</div>';
 					echo '<div class="large-5 columns">';
 						echo '<button class="small button radius">Subscribe</button>';
 					echo '</div>';
-				echo '</div>';	
+				echo '</div>';
 			echo '</div>';
 		echo '</form>';
 		echo '</div>';
 	echo '</section>';
-	
-		
+
+
 	echo '<section id="footer-social">';
 		ca_footer_social_widgets();
 	echo '</section>';
-	
+
 }
-add_action( 'genesis_footer', 'ca_add_footer' );
 
 function ca_footer_posts() {
 	$args = array(
@@ -380,22 +437,22 @@ function ca_footer_posts() {
 	);
 	echo '<ul id="posts-wrap" class="small-block-grid-1 large-block-grid-3">';
 		$loop = new WP_Query( $args ); if ($loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post();
-		$excerpt = get_the_excerpt();	
+		$excerpt = get_the_excerpt();
 		$content = get_the_content();
 		$permalink = get_permalink();
-		$trimmed_excerpt = wp_trim_words( $excerpt,20, '' ); 
-		$trimmed_content = wp_trim_words( $content,12, '' ); 
+		$trimmed_excerpt = wp_trim_words( $excerpt,20, '' );
+		$trimmed_content = wp_trim_words( $content,12, '' );
 		echo '<li>';
 		echo '<div>';
 			echo '<a href="'.$permalink.'">';
 				echo the_post_thumbnail();
 				echo the_title('<h5 class="entry-title">','</h5>');
-			echo '</a>';	
+			echo '</a>';
 			echo '<section class="entry-content">';
 				if(has_excerpt()) { echo($trimmed_excerpt); } else { echo($trimmed_content); }
-			echo '</section>';	
-		echo '</div>';	
-		echo '</li>';		
+			echo '</section>';
+		echo '</div>';
+		echo '</li>';
 		endwhile;  endif;
 	echo '</ul>';
 }
@@ -413,13 +470,11 @@ function ca_footer_social_widgets(){
 function ca_network_footer() {
 	get_template_part('partials/network', 'footer');
 }
-add_action( 'genesis_footer', 'ca_network_footer' );
 
 // mobile footer
 function ca_mobile_footer(){
 	get_template_part('partials/mobile', 'footer');
 }
-add_action( 'genesis_footer', 'ca_mobile_footer' );
 
 /** Home Function */
 // home mega columns
@@ -427,10 +482,9 @@ function ca_home_columns() {
 	if(is_front_page()) {
 		echo '<section id="home-columns-wrap">';
 			echo ca_mega_columns();
-		echo '</section>';	
+		echo '</section>';
 	}
 }
-add_action( 'genesis_after_content_sidebar_wrap', 'ca_home_columns' );
 
 /** Page Functions */
 // page slider
@@ -448,12 +502,11 @@ function ca_page_slider(){
 		 			echo '<div class="rsABlock">'.$description.'</div>';
 		 		echo '</a>';
 		 	echo '</div>';
-		 endwhile;  
+		 endwhile;
 		 echo '</div>';
 		endif; wp_reset_query();
-	}	
+	}
 }
-add_action( 'genesis_after_loop', 'ca_page_slider' );
 
 /** single article functions */
 
@@ -462,36 +515,34 @@ add_action( 'genesis_after_loop', 'ca_page_slider' );
 // add category title and subtitle
 function ca_category_heading() {
 	if(is_category()) {
-		$queried_object = get_queried_object(); 
+		$queried_object = get_queried_object();
 		$taxonomy = $queried_object->taxonomy;
-		$term_id = $queried_object->term_id; 
-		
+		$term_id = $queried_object->term_id;
+
 		$format = '<h1 class="entry-title">%s <small> -  %s</small></h1>';
-		$title = single_cat_title('',  false); 
+		$title = single_cat_title('',  false);
 		$subtitle = get_field('category_subtitle', $queried_object);
 		$description = category_description();
-		
+
 		echo sprintf($format, $title, $subtitle);
 		echo '<section class="cat-desc">'.category_description().'</section>';
 	}
 }
-add_action('genesis_before_loop', 'ca_category_heading');
 
 
 
 // featured category slider
 function ca_show_cat_slider(){
-	$queried_object = get_queried_object(); 
+	$queried_object = get_queried_object();
 	$featuredcat = get_field('featured_category', $queried_object);
 	if(is_category() && $featuredcat == true) {
 		echo ca_cat_slider();
 	}
-	
+
 }
-add_action('genesis_before_loop', 'ca_show_cat_slider');
 
 function ca_cat_slider() {
-	$queried_object = get_queried_object(); 
+	$queried_object = get_queried_object();
 	if( have_rows('category_slider', $queried_object) ):
 		echo '<div id="cat-slider" class="royalSlider rsDefault">';
 		while ( have_rows('category_slider', $queried_object) ) : the_row();
@@ -516,11 +567,10 @@ function ca_remove_meta_on_categories(){
 		remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 	}
 }
-add_action( 'genesis_before', 'ca_remove_meta_on_categories' );
 
 // only show 5 posts
 function ca_category_posts_counts( $query ) {
-	$queried_object = get_queried_object(); 
+	$queried_object = get_queried_object();
      if ( !is_admin() && $query->is_main_query() && is_category()) {
      	if(get_field('featured_category', $queried_object) == true) {
         	$query->set( 'posts_per_page', 3);
@@ -530,11 +580,8 @@ function ca_category_posts_counts( $query ) {
         return;
     }
 }
-add_action( 'pre_get_posts', 'ca_category_posts_counts', 1 );
 
 // Add Read More Link to Excerpts
-add_filter('excerpt_more', 'ca_get_read_more_link');
-add_filter( 'the_content_more_link', 'ca_get_read_more_link' );
 function ca_get_read_more_link() {
    return '&nbsp;<a href="' . get_permalink() . '" class="read-more">... Read&nbsp;More</a>';
 }
@@ -542,7 +589,6 @@ function ca_get_read_more_link() {
 function ca_remove_pagination() {
 	remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 }
-add_action( 'genesis_before', 'ca_remove_pagination' );
 
 // add our pagination
 function ca_top_pagination() {
@@ -552,9 +598,8 @@ function ca_top_pagination() {
 			echo '<span class="pagination-heading">Page</span>';
 			echo ca_category_pagination();
 		echo '</p>';
-	endif;	
+	endif;
 }
-add_action( 'genesis_before_loop', 'ca_top_pagination' );
 
 function ca_bottom_pagination() {
 	if(is_category()) :
@@ -564,13 +609,12 @@ function ca_bottom_pagination() {
 		echo '</p>';
 	endif;
 }
-add_action( 'genesis_after_loop', 'ca_bottom_pagination' );
 
 function ca_category_pagination() {
 	global $wp_query;
 
 	$big = 999999999; // need an unlikely integer
-	
+
 	echo paginate_links( array(
 		'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
 		'current' => max( 1, get_query_var('paged') ),
@@ -590,7 +634,6 @@ function ca_post_comment_flag() {
 		echo '</section>';
 	endif;
 }
-add_action( 'genesis_entry_header', 'ca_post_comment_flag' );
 
 function mc_browser_body_class($classes) {
 		global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
@@ -615,7 +658,6 @@ function mc_browser_body_class($classes) {
 		}
 		return $classes;
 }
-add_filter('body_class','mc_browser_body_class');
 
 // add wrap to deal w/ IE8 not recognizing "main" tag
 function shim_div_open() {

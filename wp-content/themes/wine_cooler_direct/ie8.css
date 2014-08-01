@@ -46,6 +46,7 @@ img, object, embed {
 
 object, embed {
   height: 100%; }
+
 iframe {
 	max-width: 100%;
 }
@@ -750,7 +751,10 @@ th.hide-for-touch {
       clear: both; }
   .large-block-grid-3 > li {
     width: 33.33333%;
-    padding: 0 0.625em 1.25em; }
+    padding: 0 0.625em 1.25em; 
+    display: block;
+    float: l;
+  }
     .large-block-grid-3 > li:nth-of-type(n) {
       clear: none; }
     .large-block-grid-3 > li:nth-of-type(3n+1) {
@@ -4187,14 +4191,18 @@ p {
     .menu-primary a:hover {
       color: #833f1c;
       text-decoration: underline; }
-  .menu-primary > li:first-child a, .menu-primary > li:nth-child(2) a {
+  .menu-primary > li:first-child a, 
+  .menu-primary > li:nth-child(2) a {
     padding: 6px 15px; }
-  .menu-primary > li:last-child {
+  .menu-primary > li:last-child,
+  .menu-primary > li.menu-item-2053 {
     background: #FFD372; }
-    .menu-primary > li:last-child a {
+    .menu-primary > li:last-child a,
+    .menu-primary > li.menu-item-2053 a {
       color: #500C31;
       padding: 6px 7px 6px 14px;
       font-weight: bold; }
+
   .menu-primary ul {
     position: absolute;
     display: none;
@@ -4551,14 +4559,29 @@ p {
   position: absolute;
   display: none;
   z-index: 99999999;
-  width: 100%;
-  max-width: 960px;
+  width: 960px;
+  overflow: hidden;
   }
   #mega-menu h4 {
     color: #525252; }
 
+#mega-menu li {
+	display: block;
+	width: 32%;
+	float: left;
+}
 .no-js #mega-menu {
   display: block; }
+
+#mega-menu .megacol,
+#home-columns-wrap .megacol,
+#footer-posts #posts-wrap li,
+#footer-social-widgets li {
+	width: 32%;
+	float: left;
+	list-style-type: none;
+}
+
 
 /* Footer */
 .site-footer .special-header {
