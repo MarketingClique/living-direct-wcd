@@ -47,9 +47,9 @@
 <div class="menu-section">
 	<h4>My Account</h4>
 	<ul>
-		<li><a href="http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Customer-Account" title="Customer Account">My Account</a></li>
-                <li><a href="http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Order-Track" title="Order Track">Order Status</a></li>
-                <li><a href="http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Wishlist-Show" title="Wish List">Wish List</a></li>
+		<li><a href="http://www.winecoolerdirect.com/on/demandware.store/Sites-WCD-Site/default/Customer-Account" title="Customer Account">My Account</a></li>
+                <li><a href="http://www.winecoolerdirect.com/on/demandware.store/Sites-WCD-Site/default/Order-Track" title="Order Track">Order Status</a></li>
+                <li><a href="http://www.winecoolerdirect.com/on/demandware.store/Sites-WCD-Site/default/Wishlist-Show" title="Wish List">Wish List</a></li>
                 <li><a href="http://www.winecoolerdirect.com/BRAND_ACCOUNT_HELP.html">Account Help</a></li>
 	</ul>
 </div>
@@ -68,7 +68,7 @@
 <div id="footer-form-container">
 <span class="emailExclusives">&nbsp;</span>
 <p>Sign up to receive special offers and promotions from the LivingDirect network of sites.</p>
-<form action="http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Newsletter-SubscribedFooter" method="post">
+<form action="http://www.winecoolerdirect.com/on/demandware.store/Sites-WCD-Site/default/Newsletter-SubscribedFooter" method="post">
 <input id="footerEmail" type="text" class="textinput" name="Email" value="" style="color: rgb(178, 173, 173);">
 <input type="submit" class="footerSubmit" value="Submit" placeholder="Enter your email address">
 </form>

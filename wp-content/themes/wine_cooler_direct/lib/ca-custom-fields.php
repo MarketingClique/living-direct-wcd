@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(function_exists("register_field_group")){
 	register_field_group(array (
 		'id' => 'acf_extra-page-data',
@@ -36,7 +36,7 @@ if(function_exists("register_field_group")){
 		),
 		'menu_order' => 0,
 	));
-	
+
 	register_field_group(array (
 		'id' => 'acf_branding',
 		'title' => 'Branding',
@@ -85,7 +85,7 @@ if(function_exists("register_field_group")){
 		),
 		'menu_order' => 0,
 	));
-	
+
 	register_field_group(array (
 		'id' => 'acf_header-information',
 		'title' => 'Header Information',
@@ -125,8 +125,8 @@ if(function_exists("register_field_group")){
 				'name' => 'search_query_url',
 				'type' => 'text',
 				'instructions' => 'Please specific the search query url for the header site for this site',
-				'default_value' => 'http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Search-Show',
-				'placeholder' => 'http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Search-Show',
+				'default_value' => 'http://www.winecoolerdirect.com/on/demandware.store/Sites-WCD-Site/default/Search-Show',
+				'placeholder' => 'http://www.winecoolerdirect.com/on/demandware.store/Sites-WCD-Site/default/Search-Show',
 				'prepend' => '',
 				'append' => '',
 				'formatting' => 'html',
@@ -152,7 +152,7 @@ if(function_exists("register_field_group")){
 		),
 		'menu_order' => 1,
 	));
-	
+
 	register_field_group(array (
 		'id' => 'acf_mega-section',
 		'title' => 'Mega Dropdown',
@@ -332,7 +332,7 @@ if(function_exists("register_field_group")){
 		),
 		'menu_order' => 2,
 	));
-	
+
 	register_field_group(array (
 		'id' => 'acf_social-widgets',
 		'title' => 'Social Widgets',
@@ -384,7 +384,7 @@ if(function_exists("register_field_group")){
 		),
 		'menu_order' => 3,
 	));
-	
+
 	register_field_group(array (
 		'id' => 'acf_page-slider',
 		'title' => 'Page Slider',
@@ -455,7 +455,7 @@ if(function_exists("register_field_group")){
 		),
 		'menu_order' => 1,
 	));
-	
+
 	register_field_group(array (
 		'id' => 'acf_extra-category-data',
 		'title' => 'Extra Category Data',

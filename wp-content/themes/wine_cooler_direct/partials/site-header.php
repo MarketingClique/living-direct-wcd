@@ -12,7 +12,7 @@
 	<div class="headerSearchBox">
 		<div class="headerContact">
 			<div class="contactHeader">
-				<a href="http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Page-Show?gcid=BRAND_CS" alt="Contact Our Product Experts">
+				<a href="http://www.winecoolerdirect.com/on/demandware.store/Sites-WCD-Site/default/Page-Show?gcid=BRAND_CS" alt="Contact Our Product Experts">
 					<b>Product Experts</b>
 				</a> - Available 24 x 7
 			</div><!-- contactHeader -->

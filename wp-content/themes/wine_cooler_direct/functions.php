@@ -407,7 +407,7 @@ function ca_add_footer(){
 	echo '<section id="footer-mailing">';
 		echo '<div class="mailer-box">';
 		_e('<p class="small-12 large-7 columns"><span>Want More?</span> Get the latest deals, news and subscribe today.</p>');
-		echo '<form method="post" action="http://www.winecoolerdirect.com/on/demandware.store/Sites-Appliance-Site/default/Newsletter-SubscribedFooter">';
+		echo '<form method="post" action="http://www.winecoolerdirect.com/on/demandware.store/Sites-WCD-Site/default/Newsletter-SubscribedFooter">';
 			echo '<div class="small-12 large-5 columns">';
 				echo '<div class="row collapse">';
 					echo '<div class="large-7 columns">';
