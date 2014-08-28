@@ -4521,6 +4521,22 @@ p {
       left: 1.75em; } }
 
 /* Columns Area */
+.top-set {
+  position: relative;
+  z-index: 1; }
+  .top-set h4 {
+    margin-bottom: 0.5em; }
+  .top-set h5 {
+    color: #525252; }
+  .top-set > li {
+    height: 100%;
+    min-height: 100%; }
+  .top-set ul {
+    margin-left: 0;
+    margin-bottom: 2em;
+    list-style-type: none; }
+  .top-set ul li {
+    margin-bottom: 0.5em; }
 .top-set h6 {
   color: #525252; }
 .top-set .sub-content {

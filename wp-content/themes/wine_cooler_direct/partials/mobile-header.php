@@ -17,43 +17,31 @@
 </section>
 <section id="mobile-drop-menu">
 	<div class="section-container accordion" data-section="accordion">
-		<section>
-			<p class="title" data-section-title>Product Knowledge</p>
-			<div class="content" data-section-content>
-				<?php while (have_rows('product_articles','option') ) : the_row();
-					$articles = get_sub_field('article','option'); 
-					foreach ($articles as $article) {
-						$title = get_the_title($article->ID);
-						$permalink = get_permalink($article->ID);
-						echo '<a href="'.$permalink.'">';
-							echo '<p>'.$title.'</p>';
-						echo '</a>';
-					}
-				endwhile; 
-				?>
-			</div>
-		</section>
-		<section>
-			<p class="title" data-section-title>Lifestyle Improvements</p>
-			<div class="content" data-section-content>
-				<?php while (have_rows('lifestyle_articles','option') ) : the_row();
-						$articles = get_sub_field('article','option'); 
-						foreach ($articles as $article) {
-							$title = get_the_title($article->ID);
-							$permalink = get_permalink($article->ID);
-							echo '<a href="'.$permalink.'">';
-								echo '<p>'.$title.'</p>';
-							echo '</a>';
-						}
-					endwhile; 
-				?>
-			</div>
-		</section>
-		<section>
-			<p class="title" data-section-title>News & Events</p>
-			<div class="content" data-section-content>
-				<?php echo ca_mobile_news();?>
-			</div>
-		</section>
+		<?php
+		$ca_columns = _get_field( 'ca_column','option' );
+		$colcount = count( $ca_columns );
+		foreach ( $ca_columns as $column ) :
+			$col_head = $column['column_heading'];
+			$col_sub = $column['column_subhead'];
+			$see_all_link = $column['see_all_link'];
+			$see_all_label = $column['see_all_label']; ?>
+			<section>
+				<p class="title" data-section-title><?php echo $col_head; ?></p>
+				<div class="content" data-section-content>
+					<?php $col_links = $column['column_link'];
+					foreach( $col_links as $link ) :
+						if ( $link ) :
+							$link_url = $link['link_url'];
+							$link_text = $link['link_text']; ?>
+							<a href="<?php echo $link_url;?>"><p><?php echo $link_text; ?></p></a>
+							<?php
+						endif;
+					endforeach;
+					if ( $see_all_link ) : ?>
+					<a class="mobile-see-all" href="<?php echo $see_all_link; ?>"><p><?php echo $see_all_label; ?></p></a>
+					<?php endif; ?>
+				</div>
+			</section>
+		<?php endforeach; ?>
 	</div>
 </section>

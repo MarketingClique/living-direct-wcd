@@ -276,77 +276,46 @@ function ca_social_shares() {
 	echo '</section>';
 }
 
+
 // mega menu/home page columns
 function ca_mega_columns(){
-		if( have_rows('columns','option') ):
-		echo '<ul class="small-block-grid-1 large-block-grid-3 top-set">';
-			 while ( have_rows('columns','option') ) : the_row();
-			 echo '<li>';
-				echo '<h4>'; the_sub_field('heading','option'); echo '</h4>';
-				echo '<section class="sub-content">'; the_sub_field('content','option'); echo '</section>';
-				echo '<h6>'; the_sub_field('sub_heading','option'); echo '</h6>';
-			 echo '</li>';
-			 endwhile;
-		echo '</ul>';
-		endif;
+	$ca_columns = _get_field( 'ca_column','option' );
+	$colcount = count( $ca_columns );
+	if ( $ca_columns ) : ?>
+		<ul class="small-block-grid-1 large-block-grid-<?php echo $colcount;?> top-set">
+			<?php
+			foreach ( $ca_columns as $column ) : ?>
+				<li class="megacol">
+					<?php
+					$col_head = $column['column_heading'];
+					$col_sub = $column['column_subhead'];
+					$see_all_link = $column['see_all_link'];
+					$see_all_label = $column['see_all_label']; ?>
 
-		echo '<ul class="small-block-grid-1 large-block-grid-3 bottom-set">';
-			echo '<li>';
-				if( have_rows('product_articles','option')):
-				echo '<section class="product-articles">';
-				while (have_rows('product_articles','option') ) : the_row();
-					$articles = get_sub_field('article','option');
-					foreach ($articles as $article) {
-						$title = get_the_title($article->ID);
-						$permalink = get_permalink($article->ID);
-						echo '<p>';
-						echo '<a href="'.$permalink.'">'.$title.'</a>';
-						echo '</p>';
-					}
-				endwhile;
-				echo '</section>';
-				endif;
-
-				echo '<p>Or choose from Featured Category</p>';
-				if( have_rows('product_category','option') ): while ( have_rows('product_category','option') ) : the_row();
-					$product_id = get_sub_field('category_name','option');
-					$product_name = get_cat_name( $product_id );
-					$product_link = get_sub_field('category_link','option');
-					echo '<p><a class="arrow" href="'.$product_link.'">'.$product_name.'</a></p>';
-				endwhile; endif;
-			echo '</li>';
-
-			echo '<li>';
-				if( have_rows('lifestyle_articles','option')):
-				echo '<section class="lifestyle-articles">';
-				while (have_rows('lifestyle_articles','option') ) : the_row();
-					$articles = get_sub_field('article','option');
-					foreach ($articles as $article) {
-						$title = get_the_title($article->ID);
-						$permalink = get_permalink($article->ID);
-						echo '<p>';
-						echo '<a href="'.$permalink.'">'.$title.'</a>';
-						echo '</p>';
-					}
-				endwhile;
-				echo '</section>';
-				endif;
-
-				$lifestyle = get_category_by_slug('lifestyle');
-				$lifestyle_id = $lifestyle->term_id;
-				$lifestyle_url = get_category_link( $lifestyle_id);
-				echo '<a class="see-all arrow" href="'.$lifestyle_url.'">See All Articles</a>';
-			echo '</li>';
-
-			echo '<li>';
-				echo ca_mega_news();
-				$news = get_category_by_slug('news-events');
-				$news_id = $news->term_id;
-				$news_url = get_category_link( $news_id);
-				echo '<a class="arrow see-all" href="'.$news_url.'">See All News</a>';
-			echo '</li>';
-
-		echo '</ul>';
+				 	<h4><?php echo $col_head; ?></h4>
+					<h5><?php echo $col_sub; ?></h5>
+					<?php $col_links = $column['column_link']; ?>
+					<ul>
+						<?php
+						foreach( $col_links as $link ) :
+							if ( $link ) :
+								$link_url = $link['link_url'];
+								$link_text = $link['link_text']; ?>
+								<li><a href="<?php echo $link_url;?>"><?php echo $link_text; ?></a></li>
+							<?php
+							endif;
+						endforeach;
+						?>
+					</ul>
+					<?php if ( $see_all_link ) : ?>
+					<p class="see-all arrow"><a href="<?php echo $see_all_link; ?>"><?php echo $see_all_label; ?></a></p>
+					<?php endif; ?>
+				</li>
+				<?php //var_export( $column ); ?>
+			<?php endforeach; ?>
+		</ul>
+	<?php
+	endif;
 }
 
 function ca_mega_news() {
@@ -657,6 +626,38 @@ function mc_browser_body_class($classes) {
 			$classes[] = 'windows';
 		}
 		return $classes;
+}
+
+
+/**
+ * Return a custom field stored by the Advanced Custom Fields plugin
+ *
+ * @global $post
+ * @param str $key The key to look for
+ * @param mixed $id The post ID (int|str, defaults to $post->ID)
+ * @param mixed $default Value to return if get_field() returns nothing
+ * @return mixed
+ * @uses get_field()
+ */
+function _get_field( $key, $id=false, $default='' ) {
+  global $post;
+  $key = trim( filter_var( $key, FILTER_SANITIZE_STRING ) );
+  $result = '';
+
+  if ( function_exists( 'get_field' ) ) {
+	if ( isset( $post->ID ) && !$id )
+	  $result = get_field( $key );
+	else
+	  $result = get_field( $key, $id );
+
+	if ( $result == '' ) // If ACF enabled but key is undefined, return default
+	  $result = $default;
+
+  } else {
+	$result = $default;
+  }
+
+  return $result;
 }
 
 // add wrap to deal w/ IE8 not recognizing "main" tag
