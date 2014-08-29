@@ -46,9 +46,6 @@ img, object, embed {
 
 object, embed {
   height: 100%; }
-iframe {
-	max-width: 100%;
-}
 
 img {
   -ms-interpolation-mode: bicubic; }
@@ -3827,7 +3824,7 @@ hr.faq {
 .jean-page {
   display: hidden; }
 
-/* General Styles */
+/* General Styles TESTING 123*/
 p {
   font-size: 14px; }
 
@@ -4079,7 +4076,7 @@ p {
 /* Major Wraps */
 .site-container {
   width: 990px;
-  background: #f2f2f2 url(images/browserbackground.png);
+  background: #fff;
   margin: 0 auto;
   position: relative; }
 
@@ -4521,22 +4518,6 @@ p {
       left: 1.75em; } }
 
 /* Columns Area */
-.top-set {
-  position: relative;
-  z-index: 1; }
-  .top-set h4 {
-    margin-bottom: 0.5em; }
-  .top-set h5 {
-    color: #525252; }
-  .top-set > li {
-    height: 100%;
-    min-height: 100%; }
-  .top-set ul {
-    margin-left: 0;
-    margin-bottom: 2em;
-    list-style-type: none; }
-  .top-set ul li {
-    margin-bottom: 0.5em; }
 .top-set h6 {
   color: #525252; }
 .top-set .sub-content {
@@ -4568,8 +4549,7 @@ p {
   display: none;
   z-index: 99999999;
   width: 100%;
-  max-width: 960px;
-  }
+  max-width: 960px; }
   #mega-menu h4 {
     color: #525252; }
 

@@ -21,7 +21,7 @@ Template: genesis
 @import "old";
 @import "custom";
 
-/* General Styles */
+/* General Styles TESTING 123*/
 p {font-size: 14px;}
 .special-header {
 	background: $primary-color;
@@ -253,7 +253,7 @@ p {font-size: 14px;}
 /* Major Wraps */
 .site-container {
 	width: 990px;
-	background: #f2f2f2 url(images/browserbackground.png);
+	background: #fff;
 	margin: 0 auto;
 	position: relative;
 }
