@@ -220,10 +220,10 @@ function ca_do_sidebar() {
 //callout before sidebar
 function ca_contact_callout() {
 	echo '<section id="contact-callout">';
-		echo '<section class="user"><i class="icon-user"></i></section>';
+		echo '<section class="user"></section>';
 		echo '<section class="content">';
-			_e('<p class="expert">Get Expert Help 24x7</p>');
-			_e('<p class="phone"><span><a href="tel:+18669508710">1-866-950-8710</a></span></p>');
+			_e('<p class="expert">Need an Expert? Call:</p>');
+			_e('<p class="phone"><span><a href="tel:+18776072517">1-877-607-2517</a></span></p>');
 		echo '</section>';
 	echo '</section>';
 }
@@ -412,15 +412,15 @@ function ca_footer_posts() {
 		$trimmed_excerpt = wp_trim_words( $excerpt,20, '' );
 		$trimmed_content = wp_trim_words( $content,12, '' );
 		echo '<li>';
-		echo '<div>';
-			echo '<a href="'.$permalink.'">';
+		echo '<a href="'.$permalink.'">';
+			echo '<div>';
 				echo the_post_thumbnail();
 				echo the_title('<h5 class="entry-title">','</h5>');
-			echo '</a>';
-			echo '<section class="entry-content">';
-				if(has_excerpt()) { echo($trimmed_excerpt); } else { echo($trimmed_content); }
+				echo '<section class="entry-content">';
+				if(has_excerpt()) { echo($trimmed_excerpt); } else { echo($trimmed_content),"<a class=\"read-more\" href='". get_permalink( get_the_ID() ) . "'><span>...</span> Read More</a>"; }
 			echo '</section>';
 		echo '</div>';
+		echo '</a>';
 		echo '</li>';
 		endwhile;  endif;
 	echo '</ul>';

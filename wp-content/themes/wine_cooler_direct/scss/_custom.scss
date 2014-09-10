@@ -1,5 +1,39 @@
 /* Custom CSS
 ------------------------------------------------------------ */
+ul.display-posts-listing li.listing-item{
+                @include shadow($padding: 1.5em 0 0);
+                @include grid-row;
+                margin-bottom: 2em;
+                margin-left: 0;
+                padding: 1em;
+                list-style: none;
+                }
+
+ul.display-posts-listing li.listing-item a.image{ 
+                float: left;
+                display: block;
+                }
+
+ul.display-posts-listing li.listing-item a.title{
+                font-size: 21px;
+                margin: 1em .5em;
+                } 
+
+
+ul.display-posts-listing li.listing-item span.excerpt{ 
+                line-height: 1.4em;
+                float: left;
+                margin: .5rem;
+                width: 70%;
+                }
+
+ul.display-posts-listing li.listing-item span.excerpt-dash{ 
+                display: none;
+                }
+
+/*Above add for LC short code 
+--------------------------------------------------------------------*/
+
 .photosource {
                 float:right;
                 text-align:right;
