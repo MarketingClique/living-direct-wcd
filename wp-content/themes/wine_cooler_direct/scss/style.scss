@@ -623,7 +623,22 @@ p {font-size: 14px;}
 
 /* Columns Area */
 .top-set {
-	h6 {color: $black;}
+	position: relative;
+	z-index: 1;
+	h4 {margin-bottom: 0.5em;}
+	h5 {color: $gray;}
+	> li {
+		height: 100%;
+		min-height: 100%;
+	}
+	ul {
+		margin-left: 0;
+		margin-bottom: 2em;
+		list-style-type: none;
+	}
+	ul li {
+		margin-bottom: 0.5em;
+	}	
 	.sub-content {
 		color: $gray;
 		font-size: 13px;
@@ -691,6 +706,14 @@ p {font-size: 14px;}
 }
 #footer-posts #posts-wrap a.read-more{
 	color: $primary-color !important;
+	display: inline-block;
+		&:after {
+		content: "";
+		position: absolute;
+		@include triangle(8px, $primary-color, right);
+		top: .5em;
+		right: -.85em;
+	}
 }
 
 #footer-social {
@@ -988,7 +1011,7 @@ section.echo {display:none !important;}
 	.post_comment_flag {
 		position: absolute;
 		right: 2.5em;
-		color: $gray;
+		top: 1em;
 		&:after {
 			content: "";
 			position: absolute;
@@ -1118,11 +1141,12 @@ section.echo {
 body.search h1 {display: block!important;}
 .read-more {
 	position: relative;
+	display: inline-block;
 	&:after {
 		content: "";
 		position: absolute;
 		@include triangle(8px, $primary-color, right);
-		top: .31em;
+		top: .5em;
 		right: -.85em;
 	}
 }

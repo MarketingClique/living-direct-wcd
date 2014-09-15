@@ -173,7 +173,7 @@ function ca_remove_menu() {
 
 //header banner
 function ca_header_banner(){
-	$html = file_get_html('http://www.kegerator.com/');
+	$html = file_get_html('http://www.winecoolerdirect.com/');
 	foreach($html->find('#headerBanner') as $element)
        echo $element;
 }

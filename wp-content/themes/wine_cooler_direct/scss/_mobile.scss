@@ -129,8 +129,19 @@
 		.author-image {width: 100%;}	
 		.author-info {width: 100%; margin-top: 1em;}	
 	}
+	/* LC styles */
+    
+    h2.lc_feature_content{
+	font-weight: bold;}
+
+	ul.display-posts-listing li.listing-item span.excerpt{
+	width: 100%; 
+	}
+
+	.lc_featimg{margin:-10px 16%;}
 	
 	#video1 {width: 250px; height: 148px;}
+
 
 	/* Royalslider */
 	.rsABlock {

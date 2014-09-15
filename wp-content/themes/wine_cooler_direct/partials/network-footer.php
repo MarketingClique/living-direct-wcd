@@ -11,8 +11,8 @@
 
 </span>
 <span class="social-link"><a href="http://www.facebook.com/winecoolerdirect" target="_blank" title="follow us on Facebook" class="social-link facebook">follow us on Facebook</a></span>
-<span class="social-link"><a href="http://www.twitter.com/CA_appliance" target="_blank" title="follow us on Twitter" class="social-link twitter">follow us on Twitter</a></span>
-<span class="social-link"><a href="http://www.youtube.com/CAwinecoolerdirect" target="_blank" title="watch us on YouTube" class="social-link youtube">watch us on YouTube</a></span>
+<span class="social-link"><a href="http://www.twitter.com/wineCoolrDirect" target="_blank" title="follow us on Twitter" class="social-link twitter">follow us on Twitter</a></span>
+<span class="social-link"><a href="https://www.youtube.com/wineCoolerDirect" target="_blank" title="watch us on YouTube" class="social-link youtube">watch us on YouTube</a></span>
 </div>
 <div id="footer-mid">
 <div id="footer-menu-container">
@@ -112,7 +112,7 @@
 
 <div class="security-tag">
 <!-- BEGIN STELLASERVICE SEAL CODE -->
-<a class="stella-seal" href="http://www.stellaservice.com/profile/livingdirect.com" target="_blank"><img src="<?php echo get_stylesheet_directory_uri();?>/images/livingdirect.com.png" onerror="this.style.display=&#39;none&#39;;"></a>
+<a class="stella-seal" href="http://www.stellaservice.com/profile/winecoolerdirect.com" target="_blank"><img src="<?php echo get_stylesheet_directory_uri();?>/images/livingdirect.com.png" onerror="this.style.display=&#39;none&#39;;"></a>
 <!-- END STELLASERVICE SEAL CODE -->
 </div>
 
