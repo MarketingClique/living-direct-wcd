@@ -3404,11 +3404,15 @@ img.rsImg {
   font-size: 11px; }
 
 .headerSearchBox .headerInput:focus {
-  background-color: #FFF;
+background: url(images/search.png) no-repeat left top;
+background-position: 4px 2px;
+background-color: #FFF;
   color: #000; }
 
 .headerSearchBox input[type="text"]:focus {
-  background-color: #FFF; }
+background: url(images/search.png) no-repeat left top;
+background-position: 4px 2px;
+background-color: #FFF; }
 
 .headerSearchBox #SimpleSearchForm {
   display: inline;
