@@ -42,6 +42,9 @@ p {font-size: 14px;}
 			content: "";
 		}
 	}
+	@media only screen and (max-width: 600px) {
+		margin-left: 0; 
+	}
 }
 .arrow {
 	font-weight: bold;

@@ -3895,6 +3895,9 @@ p {
         border-top: 10px solid black;
         border-left: 20px solid transparent;
         content: ""; } }
+@media only screen and (max-width: 600px) {
+  .special-header {
+    margin-left: 0; }
 
 .arrow {
   font-weight: bold;
