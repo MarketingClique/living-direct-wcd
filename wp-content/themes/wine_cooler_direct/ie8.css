@@ -3352,7 +3352,7 @@ img.rsImg {
   top: 4px; }
 
 .headerSearchBox {
-  float: left;
+  float: right;
   width: 340px;
   margin: 4px 0 0 20px;
   position: relative; }
