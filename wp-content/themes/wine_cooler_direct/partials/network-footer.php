@@ -7,7 +7,7 @@
 <div id="social-links">
 <span class="social-link">
 
-<a href="http://blog.winecoolerdirect.com/" target="_blank" title="read our Blog" class="social-link blog">read our blog</a>
+<a href="http://learn.winecoolerdirect.com/" target="_blank" title="read our Blog" class="social-link blog">read our blog</a>
 
 </span>
 <span class="social-link"><a href="http://www.facebook.com/winecoolerdirect" target="_blank" title="follow us on Facebook" class="social-link facebook">follow us on Facebook</a></span>
@@ -106,7 +106,7 @@
 <div id="security-container">
    <div class="security-tag"><a href="http://www.bbb.org/central-texas/business-reviews/internet-shopping/living-direct-in-austin-tx-49329" target="_blank" alt="A+ Reliability Ranking" title="A+ Reliability Ranking"><img src="<?php echo get_stylesheet_directory_uri();?>/images/bbb.jpg"></a></div>
 
-   <div class="security-tag"><a target="_blank" href="https://seal.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.winecoolerdirect.COM&lang=en"><img src="<?php echo get_stylesheet_directory_uri();?>/images/verisign.jpg" alt="VeriSign Secured &gt;&gt; Click to verify."></a></div>
+   <div class="security-tag"></div>
 
    <div class="security-tag"><a target="_blank" href="https://www.scanalert.com/RatingVerify?ref=www.winecoolerdirect.com"><img border="0" src="http://images.scanalert.com/meter/www.winecoolerdirect.com/22.gif" width="115" height="32" alt="HACKER SAFE certified sites prevent over 99.9% of hacker crime."></a></div>
 
