@@ -142,6 +142,28 @@
 	
 	#video1 {width: 250px; height: 148px;}
 
+/* ADD for Give away pages */
+
+.widget {
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: auto;
+        border-radius: 4px;
+        background-color: #fff;
+        margin-top: 20px;
+        width: 100%;
+        min-width: 300px;
+    }
+.widget div{
+	    overflow: hidden;
+	 }
+
+#raflcptr{
+	width: 400px;
+	margin: 0 -50px;
+		}
+
 
 	/* Royalslider */
 	.rsABlock {

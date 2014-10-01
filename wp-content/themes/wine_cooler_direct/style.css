@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 /*!
 Theme Name:		Wine Cooler Direct
 Version:			1.0
@@ -3862,8 +3863,136 @@ hr.faq {
   width: 100%;
   margin: 10px 0 20px 0; }
 
-.jean-page {
-  display: hidden; }
+/* #SD CSS For Monthly Giveaway ================================================== */
+.hero {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0px;
+  border-bottom: 1px #ccc dashed;
+  background-color: #fff;
+  background-image: url('http://learn.winecoolerdirect.com/wp-content/uploads/2014/09/hero-oct.jpg');
+  background-repeat: no-repeat; }
+
+.widget {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: auto;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-top: 20px; }
+
+.ytVideo {
+  width: 100%;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #4d4d4d;
+  margin-bottom: 20px;
+  border: 1px #eee solid; }
+
+.winThisProduct h3 {
+  font-family: Helvetica, sans-serif;
+  text-align: center; }
+
+.contestTitle {
+  background-color: #f9f9f9;
+  box-shadow: 2px -1px 5px rgba(0, 0, 0, 0.1), 0 0 5px rgba(153, 153, 153, 0.25);
+  padding: 0.5em;
+  display: block;
+  width: auto;
+  color: #fff;
+  background-color: #500c32;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px; }
+
+.contestTitle h2 {
+  color: #fff;
+  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 1em; }
+
+.pushDown {
+  position: relative;
+  height: 255px; }
+
+.pushDown h3 {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  color: #fff;
+  font-size: 2.2em;
+  text-align: center;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  text-shadow: 0px 0px 6px #4d4d4d; }
+
+.instructions {
+  margin: 0px 0px 0px 0px; }
+
+p#rules {
+  font-size: 12px; }
+
+.stepsTitle h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700; }
+
+.steps {
+  height: auto;
+  border: 1px #ccc solid;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px; }
+
+.steps h3 {
+  font-size: 20px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 800;
+  margin-top: 12px; }
+
+.step1 {
+  background-image: url('http://learn.winecoolerdirect.com/wp-content/uploads/2014/09/step1.png');
+  background-repeat: no-repeat;
+  height: 50px;
+  background-color: #500c32; }
+
+.step2 {
+  background-image: url('http://learn.winecoolerdirect.com/wp-content/uploads/2014/09/step2.png');
+  background-repeat: no-repeat;
+  height: 50px;
+  background-color: #500c32; }
+
+.step3 {
+  background-image: url('http://learn.winecoolerdirect.com/wp-content/uploads/2014/09/step3.png');
+  background-repeat: no-repeat;
+  height: 50px;
+  background-color: #500c32; }
+
+.oswaldHeading {
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 700;
+  font-size: 2.3em;
+  text-align: center; }
+
+.winThisProduct {
+  margin-bottom: 25px;
+  text-align: center; }
+
+.winThisProduct .oswald {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 200;
+  font-size: 1.2em;
+  text-align: center; }
+
+.underlineIt {
+  text-decoration: underline !important; }
 
 /* General Styles */
 p {
@@ -5457,6 +5586,7 @@ body.safari #headerBanner {
   /* Search Area */
   /* Pages */
   /* LC styles */
+  /* ADD for Give away pages */
   /* Royalslider */
   .site-container {
     width: 100%; }
@@ -5591,6 +5721,21 @@ body.safari #headerBanner {
   #video1 {
     width: 250px;
     height: 148px; }
+  .widget {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: auto;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-top: 20px;
+    width: 100%;
+    min-width: 300px; }
+  .widget div {
+    overflow: hidden; }
+  #raflcptr {
+    width: 400px;
+    margin: 0 -50px; }
   .rsABlock {
     left: 5%;
     bottom: 12%;
