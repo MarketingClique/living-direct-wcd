@@ -4342,7 +4342,7 @@ p {
 @media only screen and (max-width: 600px) {
   .special-header {
     margin-left: 0; }
-
+}
 .arrow {
   font-weight: bold;
   margin-bottom: 0; }
