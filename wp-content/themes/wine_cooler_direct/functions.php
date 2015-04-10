@@ -2,6 +2,7 @@
 
 // includes
 include_once('lib/backend.php');
+include_once('lib/shortcodes.php');
 include_once('lib/simple_html_dom.php');
 include_once('lib/acf/advanced-custom-fields/acf.php' );
 include_once('lib/acf/acf-repeater/acf-repeater.php');

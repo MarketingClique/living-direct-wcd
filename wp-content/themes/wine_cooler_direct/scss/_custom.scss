@@ -1,3 +1,27 @@
+/* WCD COUPON AND PROMOTION STYLING */
+
+.clear {clear:both; margin-bottom:45px;}
+#coupons h3 { display: block; background: #f8daef url('http://learn.compactappliance.com/wp-content/uploads/2014/11/coupon1_03.jpg') right no-repeat; padding: 10px 10px 5px; color: #701a49; font-size: 16px; font-weight: bold; margin-bottom: 15px; max-width:500px; width:100%; height:37px; }
+#coupons p, #coupons br {display:none}
+.coupon .fold {background: url('http://learn.compactappliance.com/wp-content/uploads/2014/11/coupon1_14.jpg'); width:26px; height:26px; position:absolute; bottom:-6px; right:-6px;}
+.coupon { background-color: #fffdf9; border: 6px dashed #f8daef; text-align: center; padding: 0px; width:100%; max-width: 445px; padding:10px; line-height:1.2em; position:relative; }
+.coupon .fineprint { display:block; text-align:left; min-height:25px;}
+.coupon .expiration { font-weight: bold; font-size: 11px; color: #0e4e5e; line-height: 12px; margin-bottom: 0px; padding-bottom: 0px; }
+.coupon .disclaimer { font-size: 10px; line-height: 11px; margin-bottom: 0px; padding-bottom: 0px; line-height: 12px; }
+.coupon .promocode {font-size:14px; font-weight:bold; color:#701a49; margin-bottom: 15px; display:block; min-height:2em; }
+.coupon .shop { text-transform: uppercase; color: #992111; font-weight: bold; font-size: 16px; text-align: right; display:block;min-height:25px; }
+.coupon .shop a { color: #992111; text-decoration: none; }
+.coupon .shop a:hover { color: #ca2d19; }
+.coupon .shop img { padding-left: 6px; border: none; }
+.shadow { background-image: url(http://learn.compactappliance.com/wp-content/uploads/2014/11/coupon1_16.jpg); background-repeat: no-repeat; height: 12px; margin-bottom:15px; }
+.scissors { background-image: url(http://learn.compactappliance.com/wp-content/uploads/2014/11/coupon1_09.jpg); background-repeat: no-repeat; height: 19px; }
+.promocode { color: #0e4e5e; font-size: 14px;  }
+.title a {font-size:16px; color:#701a49; display:block; text-align:center; padding-top:10px; display:block; min-height:2.5em;}
+.desc {display:block; padding:5px 0 15px; text-align:center; min-height:2.5em; font-size:12px; color:#666;}
+@media only screen and (max-width: 767px) { 
+.coupon .fineprint, .coupon .shop { text-align:center; }
+}
+
 /* Custom CSS
 ------------------------------------------------------------ */
 ul.display-posts-listing li.listing-item{
