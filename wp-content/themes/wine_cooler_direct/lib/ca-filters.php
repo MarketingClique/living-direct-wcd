@@ -33,7 +33,7 @@ function ca_change_separator_breadcrumb( $args ) {
 // Customize the entry meta in the entry header
 add_filter( 'genesis_post_info', 'ca_post_entry_filter' );
 function ca_post_entry_filter($post_info) {
-	$post_info = '[post_date] by: [post_author_posts_link] [post_comments zero="0" one="1" more="% "]';
+	$post_info = '[post_date] [post_author_posts_link before="by: "] [post_comments zero="0" one="1" more="% "]';
 	return $post_info;
 }
 
@@ -44,7 +44,7 @@ function ca_post_meta_filter($post_meta) {
 	return $post_meta;
 }
 
-//enable author box 
+//enable author box
 add_filter( 'get_the_author_genesis_author_box_single', '__return_true' );
 add_filter( 'get_the_author_genesis_author_box_archive', '__return_true' );
 
@@ -53,7 +53,7 @@ add_filter( 'get_the_author_genesis_author_box_archive', '__return_true' );
 add_filter( 'genesis_author_box', 'ca_author_box', 10, 6 );
 function ca_author_box( $output, $context, $pattern, $gravatar, $title, $description ) {
 	$output = '';
-	
+
 	// Author box on single post
 	if( 'single' == $context ) {
 		$output .= '<div class="author-box">';
@@ -65,7 +65,7 @@ function ca_author_box( $output, $context, $pattern, $gravatar, $title, $descrip
 				$output .= '<p class="desc">' . get_the_author_meta( 'description' ) . '</p>';
 			$output .= '</div>';
 		$output .= '</div><!-- .author-box -->';
-	
+
 	} else {
 		$output .= '<div class="author-box">';
 			$output .= '<div class="author-image">';
@@ -78,6 +78,6 @@ function ca_author_box( $output, $context, $pattern, $gravatar, $title, $descrip
 			$output .= '</div>';
 		$output .= '</div><!-- .author-box -->';
 	}
-	
+
 	return $output;
 }

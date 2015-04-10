@@ -5352,6 +5352,31 @@ body.single-post span.entry-comments-link {
     width: 23px;
     height: 17px;
     background: url(images/comment-flag.png); }
+
+@media only screen and (max-width: 568px){
+	body.single-post span.entry-comments-link {
+	  position: relative;
+	  z-index: 1;
+	  float: left;
+	  clear: left;
+	  width: 45px;
+	  padding-right: 25px;
+	  font-weight: bold; }
+	body.single-post .entry-time {
+		float: left;
+	}
+  body.single-post span.entry-comments-link:after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 0;
+    width: 23px;
+    height: 17px;
+    background: url(images/comment-flag.png); }
+
+}
+
+
 body.single-post .entry-footer {
   border-bottom: 1px solid #999999; }
   body.single-post .entry-footer p {
